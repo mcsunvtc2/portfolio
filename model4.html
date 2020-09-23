@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <title>3D Model - by Your Name</title>
+    <script>
+        // Component to home page when box is on click.
+        AFRAME.registerComponent('cursor-listener', {
+          init: function () {
+              this.el.addEventListener('click', function (evt) {
+                console.log('I was clicked at: ', evt.detail.intersection.point);
+                window.location = "https://mcsunvtc.wixsite.com/tech";
+            });
+          }
+        });
+        </script>
+    <body style="margin : 0px; overflow: hidden;">
+        <a-scene background="color: #ddFAdd">
+
+            <a-entity camera look-controls wasd-controls>
+                <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1"
+                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: orange; shader: flat">
+                </a-entity>
+            </a-entity>
+            <a-assets>
+                <img id="ground" src="images/home.png">
+            </a-assets>
+            <a-box cursor-listener src="#ground" position="-2 -0.1 -4" scale="0.5 0.5 0.5"></a-box>
+            <a-entity scale="50 50 50" position="0 0 -2"
+                gltf-model="url(https://raw.githubusercontent.com/mcsunvtc/ar01/master/models/BoomBox.gltf)"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear;">
+            </a-entity>
+            <a-plane position="0 -0.5 -4" rotation="-89 0 0" width="7" height="5" color="#7BC8A4" shadow></a-plane>
+
+        </a-scene>
+    </body>
+</html>
+ 
